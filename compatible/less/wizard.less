@@ -1,0 +1,184 @@
+/*表单向导*/
+.wizard-steps {
+  display: block;
+  list-style: none outside none;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+.wizard-steps li {
+  display: block;
+  float: left;
+  max-width: 25%;
+  min-width: 25%;
+  text-align: center;
+  padding-left: 0;
+}
+.wizard-steps li:before {
+  border-top: 6px solid #d1dade;
+  content: "";
+  display: block;
+  font-size: 0;
+  overflow: hidden;
+  position: relative;
+  top: 13px;
+  right:-85px;
+  width: 100%;
+  z-index: 1;
+  left: 7px;
+}
+
+.wizard-steps li:first-child:before {
+  border-top: 6px solid gold;
+  content: "";
+  display: block;
+  font-size: 0;
+  overflow: hidden;
+  position: relative;
+  top: 13px;
+  right:-85px;
+  width: 100%;
+  z-index: 1;
+}
+/*.wizard-steps li:last-child:before {
+
+  right: 25%;
+}*/
+.wizard-steps li .step {
+  background-color: #d1dade;
+  border-radius: 32px 32px 32px 32px;
+  color: #ffffff;
+  display: inline;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 12px;
+  padding: 4px 9px;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  transition: all 0.2s linear 0s;
+}
+.wizard-steps li:first-child .step {
+  background-color: gold;
+  border-radius: 32px 32px 32px 32px;
+  color: #ffffff;
+  display: inline;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 12px;
+  padding: 4px 9px;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  transition: all 0.2s linear 0s;
+}
+.wizard-steps li.action .step {
+  background-color: green;
+  border-radius: 32px 32px 32px 32px;
+  color: #ffffff;
+  display: inline;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 12px;
+  padding: 4px 9px;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  transition: all 0.2s linear 0s;
+}
+.wizard-steps li.waite-action .step {
+  background-color: gold;
+  border-radius: 32px 32px 32px 32px;
+  color: #ffffff;
+  display: inline;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 12px;
+  padding: 4px 9px;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  transition: all 0.2s linear 0s;
+}
+.wizard-steps li .title {
+  color: #B1BCC5;
+  display: block;
+  font-size: 13px;
+  line-height: 15px;
+  max-width: 100%;
+  position: relative;
+  table-layout: fixed;
+  text-align: center;
+  top: 20px;
+  word-wrap: break-word;
+  z-index: 104;
+}
+.wizard-steps li:first-child .title {
+  color: gold;
+  display: block;
+  font-size: 13px;
+  line-height: 15px;
+  max-width: 100%;
+  position: relative;
+  table-layout: fixed;
+  text-align: center;
+  top: 20px;
+  word-wrap: break-word;
+  z-index: 104;
+}
+.wizard-steps li.action .title {
+  color: green;
+  display: block;
+  font-size: 13px;
+  line-height: 15px;
+  max-width: 100%;
+  position: relative;
+  table-layout: fixed;
+  text-align: center;
+  top: 20px;
+  word-wrap: break-word;
+  z-index: 104;
+}
+.wizard-steps li.waite-action .title {
+  color: gold;
+  display: block;
+  font-size: 13px;
+  line-height: 15px;
+  max-width: 100%;
+  position: relative;
+  table-layout: fixed;
+  text-align: center;
+  top: 20px;
+  word-wrap: break-word;
+  z-index: 104;
+}
+.wizard-steps li.action:before {
+  border-top: 6px solid green;
+  content: "";
+  display: block;
+  font-size: 0;
+  overflow: hidden;
+  position: relative;
+  top: 13px;
+  right:-85px;
+  width: 100%;
+  z-index: 1;
+}
+.wizard-steps li.waite-action:before {
+  border-top: 6px solid gold;
+  content: "";
+  display: block;
+  font-size: 0;
+  overflow: hidden;
+  position: relative;
+  top: 13px;
+  right:-85px;
+  width: 100%;
+  z-index: 1;
+}
+.wizard-steps a:hover,
+.wizard-steps a:active,
+.wizard-steps a:focus {
+  text-decoration: none;
+}
+

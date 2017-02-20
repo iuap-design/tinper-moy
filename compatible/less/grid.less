@@ -1,0 +1,775 @@
+//高度34px  2.125em
+//字体12px  .75em
+//上下padding 9px 16px  
+
+// header区域
+@headerHeight:2.125em; //34
+@headerFontSize:.75em; //12
+@headerPadding:.5em 1em 0 1em;
+@headerLinkHeight:2.83em; //34
+@headermultiSelectPadding:.4em 0 0 .8em;
+// content区域
+@contentHeight:2.125em; //34
+@contentFontSize:.75em; //12
+@contentTdMargin:0 1em 0 1em;
+@contentLeftDivHeight:2.125em;  //2.83em;
+@contentTdDivHeight:2.125em;   //2.83em;
+@contentmultiSelectPadding: 0 0 0 .8em;
+// columnMenu区域
+@columnMenuHeight:2.125em; //34
+@columnMenuFontSize:.75em; //12
+@columnMenuPadding:.5em 1em 0 1em;
+@columnMenuLinkHeight:2.83em; //34
+
+
+
+.u-grid{
+    display: block;
+    position:relative;
+    color:#444;
+    background-color:#F9F9F9;
+    zoom:1;
+    font-family:'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Segoe UI', 'Microsoft Yahei', Tahoma, Arial, STHeiti, sans-serif;
+    font-weight:normal;
+    font-size:16px;
+    border-width:1px;
+    border-style: solid;
+    border-color:#e5e5e5;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-shadow:none;
+    -webkit-box-shadow:none;
+}
+
+.u-grid li{
+    font-size:16px;
+}
+
+.u-grid-top{
+    display: none;
+    position: fixed;
+    width:100%;
+    height:100%;
+    left:0px;
+    top:0px;
+    z-index: 99999;
+    background-color: #fff ;
+    filter:alpha(opacity=10); 
+    -moz-opacity:0.1;
+    -khtml-opacity:0.1; 
+    opacity: .1;
+    user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-drag: none;
+    cursor: default;
+}
+
+.u-grid table{
+    width: 100%;
+    margin:0;
+    max-width:none;
+    border-collapse:separate;
+    border-spacing:0;
+    empty-cells:show;
+    border-width:0;
+    outline:0;
+    table-layout: fixed;
+}
+
+.u-grid-grid{
+    
+}
+/*
+header区域css begin
+*/
+
+.u-grid-header{
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    border-color: #e5e5e5;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background-image: none;
+    background-position: 50% 50%;
+    background-repeat: repeat;
+    position: relative;
+}
+
+.u-grid-header-wrap{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+    zoom:1;
+}
+.u-grid-header-left{
+    position: absolute;
+    z-index:11;
+    background-color:#F9F9F9;
+    height: 100%;
+}
+.u-grid-header-multi-select{
+    padding: @contentmultiSelectPadding;
+    position:relative;
+    float: left;
+    height:@headerHeight;
+    border-style: solid;
+    border-color: #e5e5e5;
+    border-width:0 1px 1px 0;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    height: 100%;
+}
+
+.u-grid-header-num{
+    position:relative;
+    float: left;
+    height:@headerHeight;
+    border-style: solid;
+    border-color: #e5e5e5;
+    border-width:0 1px 1px 0;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    height: 100%;
+}
+
+.u-grid-header-th{
+    //position: relative;//处理多表头时
+    vertical-align:bottom;
+//  padding:.8em .6em .8em .6em;
+    height:@headerHeight;
+    font-weight:normal;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    text-align:left;
+    border-style:solid;
+    border-color:#e5e5e5;
+    border-width:0 0 1px 1px;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background-image:none;
+    background-position:50% 50%;
+    user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-drag: none;
+  cursor: default;
+    
+}
+.u-grid-header-th-first{
+    border-left-width:0;
+}
+.u-grid-header-link{
+    display:block;
+    padding-left:1.33em;
+    padding-right:2em;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    color:#a8a8a8;
+    font-size: @headerFontSize;
+    height:@headerLinkHeight;
+    line-height:@headerLinkHeight;
+}
+
+.u-gird-parent{
+    position:absolute;
+    top:0px;
+    text-align: center;
+    background-color: #F9F9F9;
+    z-index: 1;
+    border-style: solid;    
+    border-color: #e5e5e5;    
+    border-width: 0 0 1px 0px;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.u-grid-header-link:hover{
+    color:#a8a8a8;
+}
+.u-grid-header-link:visited{
+    color:#a8a8a8;
+}
+
+.u-grid-header-columnmenu{
+    position:absolute;
+    padding:1em .4em .5em .6em;
+    font-size:@headerFontSize !important;
+    top:0px;
+    right: 0px;
+    color:#a8a8a8;
+    height:100%;
+}
+/*拖动*/
+.u-grid-header-resize-handle{
+    position:absolute;
+    cursor:col-resize;
+    z-index:12;
+    width:.6em;
+    height: @headerHeight;
+    display: block;
+    bottom: 0px;
+}
+/*交换*/
+.u-grid-header-drag-clue{
+    overflow:hidden;
+    border-radius:2px;
+    background-color:#3f51b5;
+    position:absolute;
+    z-index:13;
+    border-style:solid;
+    border-width:1px;
+    font-size:@headerFontSize;
+    white-space:nowrap;
+    cursor:default;
+    color: #fff;
+}
+
+.u-grid-header-drag-status{
+    width: 1em;
+    height: 1em;
+}
+
+
+.u-grid-header-swap-tip-span{
+    height:5px;
+    position:absolute;
+    z-index:13;
+    cursor:default;
+    display: none;
+    line-height: 0px !important;
+}
+
+/*排序*/
+.u-grid-header-sort-span {
+  width: 1em;
+  text-align: center;
+  line-height: 2.125em !important;
+  position: absolute;
+  top: 0px;
+  right: 2.9em;
+}
+
+/*排序优先级*/
+.u-grid-header-sort-priority {
+  display: inline-block;
+  position: absolute;
+  top: 1em;
+  right: -0.5em;
+  line-height: 2.125em;
+  font-size: 0.5em;
+}
+/*
+header区域css end
+*/
+
+/*
+content区域css begin
+*/
+
+.u-grid td{
+    border-style:solid;
+    border-color:#e5e5e5;
+    border-width:0 0 1px 0;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    vertical-align:middle;
+//  overflow:hidden; 日期选择器会被隐藏
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    height:@contentHeight;
+}
+
+.u-grid-content-td-div{
+    height: 100%;
+    margin: @contentTdMargin;
+    line-height: @contentTdDivHeight;
+    font-size:@contentFontSize;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+//  height:@contentHeight;
+}
+
+.u-grid-edit-div .u-grid-content-td-div{
+    margin: @contentTdMargin;
+    line-height: @contentTdDivHeight;
+    font-size:12px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    height:100%
+}
+
+.u-grid-content{
+    position:relative;
+    //width:100%;
+    //height:100%;
+    //overflow-x:hidden; ///日期选择器会被隐藏
+    //overflow-y:hidden;
+    zoom:1;
+    background-color:#fff ;
+}
+
+.u-grid-content-div{
+    position:relative;
+    overflow-x: auto; // 日期选择器会被隐藏
+    overflow-y: auto;
+}
+
+.u-grid-content-left{
+    position:absolute;
+}
+
+.u-grid-content-left-sum-bottom{
+    position:absolute;
+    bottom:16px;
+    left:0px;
+    height: @contentHeight;
+    z-index: 11;
+    background-color:#FFF;
+}
+
+.u-grid-content-left-bottom{
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    height: 16px;
+    z-index: 11;
+    background-color:#FFF;
+}
+.u-grid-content-left-row{
+    position: relative;
+    height: @contentHeight;
+}
+
+.u-grid-content-multiSelect{
+    padding:@contentmultiSelectPadding;
+    position:relative;
+    float: left;
+    height:@contentHeight;
+    line-height: @contentHeight;
+    border-style: solid;
+    border-color: #e5e5e5;
+    border-width:0 1px 1px 0;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.u-grid-multi-input{
+    margin:0px !important;
+    height:100%;
+
+}
+
+.u-grid-content-num{
+    border-style: solid;
+    border-color: #e5e5e5;
+    border-width: 0 1px 1px 0;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    height:@contentLeftDivHeight;
+    line-height:@contentLeftDivHeight;
+
+    position:relative;
+    float:left;
+    text-align: center;
+    padding: 0px;
+}
+
+.u-grid-content-sum-row{
+    
+}
+
+.u-gird-centent-sum-div{
+    float:left;
+    font-size: @contentFontSize;
+    height: @contentTdDivHeight;
+    line-height: @contentTdDivHeight;
+}
+
+.u-grid-content-sel-row{
+    background-color: #4F8EDC !important;
+}
+
+//.u-grid-content-sel-row:hover{
+//  background-color: #4F8EDC;
+//  color: #FFF;
+//}
+
+.u-grid-content-focus-row{
+    background-color: #6CABF8;
+}
+
+.u-grid-content-tree-span{
+    width:1.25em;
+    height: 1.25em;
+    color: #007ae3;
+    font-size: 13px !important;
+}
+
+/*
+content区域css end
+*/
+
+
+/*
+content edit menu区域css begin
+*/
+.u-grid-content-edit-menu{
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    z-index: 13;
+    background: #fff;
+    -webkit-box-sizing:content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+	width:100%;
+	height: 28px;
+}
+
+/*.u-grid-content-edit-menu-button{
+    height: 2em;
+    margin:.2em .2em;
+} tiaoxq修改  .u-grid-content-edit-menu-button-ok  .u-grid-content-edit-menu-button-cancel*/
+
+
+.u-grid-content-edit-menu-button{
+	position:absolute;
+	right: 50px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    font-size: 13px;
+    line-height: 1.5;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    
+    height: 28px;
+    width: 80px;
+    background-color: white;
+    border-color: #bfbfbf;
+    outline:none;
+}
+
+.u-grid-content-edit-menu-button-ok {
+    color: #01a3f6;
+    margin-left:10px;
+}
+
+.u-grid-content-edit-menu-button-cancel {
+    color: #e50011;
+    right: 150px;
+}
+
+.u-grid-edit-form{
+    position: relative;
+    z-index: 12;
+    font-size:12px; // tianxq
+    float:left;
+}
+
+.u-grid-edit-whole-div{
+	position:relative;
+    width:350px;
+    float:left;
+    //margin-left: 10px; //tianxq
+    height:30px; //tianxq
+    margin-bottom:10px; //tianxq
+}
+
+.u-grid-edit-label{
+    //width:140px;
+    width: 84px; //tianxq
+    float:left;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    text-align: right;
+    //margin-right: 10px; //tianxq
+    line-height: 28px; //tianxq
+}
+
+.u-grid-edit-div{
+    //width:200px; //tianxq
+    width:175px; //tianxq
+    margin-left: 10px; //tianxq
+    float:left;
+    
+}
+// tianxq begin
+.u-grid-edit-div input[type=text]{
+    width:100%;
+	line-height:28px;
+    height:28px;
+//  padding:2px 10px;
+    border: 1px solid #c9c9c9;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    transition: none;
+    outline:none;
+}
+
+.u-grid-edit-div input[type=checkbox]{
+    height: 13px;
+    width: 13px;
+}
+.u-grid-edit-div input[type=radio]{
+    height: 13px;
+    width: 13px;
+}
+
+.u-grid-edit-div .input-group input {
+    border-right:none;
+    padding-right: 0px;
+}
+
+//tianxq end
+/*
+content edit menu区域css end
+*/
+
+/*
+content no row区域css begin
+*/
+.u-grid-noRowsDiv{
+    position: relative;
+    top:0px;
+    left:0px;
+    width: 100%;
+    font-size: @contentFontSize;
+    height: @contentHeight;
+    line-height: @contentHeight;
+    color:#a8a8a8;
+    text-align: center;
+    display: none;
+}
+
+.u-grid-noRowsShowDiv{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    font-size: @contentFontSize;
+    height: @contentHeight;
+    line-height: @contentHeight;
+    color:#a8a8a8;
+    text-align: center;
+    display: none;
+}
+
+
+/*
+content no row区域css end
+*//*
+columnMenu区域css begin
+*/
+.u-grid-column-menu{
+    width:160px;
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    z-index: 13;
+    -webkit-box-sizing:content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.u-grid-column-menu-ul{
+    background-color: #fff;
+    font-weight:500;
+    background-image: none;
+    padding: 0px;
+    background-position: 50% 50%;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color:#e5e5e5;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+}
+
+.u-grid-column-menu-li{
+    display: block;
+    height: @columnMenuHeight;
+    border-width:1px 1px 0px 1px;
+    border-style: solid;
+    border-color:#e5e5e5;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    cursor: pointer;
+}
+
+.u-grid-column-menu-div1{
+    display: block;
+    padding: 0 .8em 0 .8em;
+    line-height: @columnMenuLinkHeight;
+    font-size:@columnMenuFontSize;
+    position: relative;
+    height: 100%;
+}  
+
+.u-grid-column-menu-span{
+    position: absolute;
+    width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.u-grid-column-menu-div3{
+    right: 2em;
+    position: absolute;
+    font-size:@columnMenuFontSize !important;
+    filter:alpha(opacity=70); 
+    -moz-opacity:0.7;
+    -khtml-opacity:0.7; 
+    opacity: .7;
+    line-height: @columnMenuLinkHeight !important;
+}
+/*
+columnMenu区域css end
+*/
+
+/*
+columnMenu columns区域css begin
+*/
+.u-grid-column-menu-columns{
+    width:160px;
+    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    z-index: 13;
+    -webkit-box-sizing:content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.u-grid-column-menu-columns-ul{
+    border-width: 1px 0px 1px 0px;
+    border-style: solid;
+    border-color:#e5e5e5;
+    background-color: #fff;
+    font-weight:500;
+    background-image: none;
+    padding: 0px;
+    background-position: 50% 50%;
+    margin: 0px;
+}
+
+.u-grid-column-menu-columns-li{
+    display: block;
+    height: @columnMenuHeight;
+    border-width:0px 1px 0px 1px;
+    border-style: solid;
+    border-color:#e5e5e5;
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.u-grid-column-menu-columns-div1{
+    display: block;
+    padding: 0 .8em 0 .8em;
+    line-height: @columnMenuLinkHeight;
+    font-size:@columnMenuFontSize;
+    position: relative;
+    height: 100%;
+}  
+
+.u-grid-column-menu-columns-div2{
+    position: absolute;
+    filter:alpha(opacity=70); 
+    -moz-opacity:0.7;
+    -khtml-opacity:0.7; 
+    opacity: .7;
+}   
+
+.u-grid-column-menu-columns-span{
+    position: absolute;
+    width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    left:35px;
+}
+/*
+columnMenu columns区域css end
+*/
+
+/*
+form展示区域css begin
+*/
+.u-grid-form{
+    width:100%;
+    height:100%;
+    overflow-x: hidden;
+    overflow-y: scroll; 
+}
+.u-grid-content-td-div .input-group-addon{
+     padding: 3px 12px;
+}
+.u-grid-content-td-div .grid-combox{
+     
+     height: 28px;
+}
+.u-grid-content-td-div .eType-input{
+    width: 90%;
+    height: 90%;
+    margin:0px;
+    margin-left:5%;
+    min-height:20px;
+    font-size:12px;
+    color:#444;
+}
+
+.u-grid-content-td-div .eType-input > input{
+    width: 100%;
+    height:100%;
+    line-height: normal;
+}
+.u-grid-content-td-div .checkbox label{
+	top:-2px;
+}
+.u-grid-content-td-div input[type=checkbox]{
+	position:relative;
+	top:0px;
+    cursor: pointer;
+    
+}
+/*
+form展示区域css end
+*/

@@ -1,0 +1,32 @@
+.alert-backdrop {
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index:98;
+    background-color:#000;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    -webkit-transition: opacity .15s linear;
+    transition: opacity .15s linear;    
+//  .transition(opacity .15s linear);
+}
+
+.alert-waiting {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    margin-left: -100px;
+    margin-top: -100px;
+    display: block;
+    z-index: 99;
+}
+
+.alert-waiting i{
+    font-size: 100px;
+    margin: 36px 38px;
+    color: #0090d9;
+}
