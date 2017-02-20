@@ -1,53 +1,20 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
+var minifycss = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
-var minifycss = require('gulp-minify-css');
-var exec = require('child_process').exec;
 var zip = require('gulp-zip');
-var flatmap = require('gulp-flatmap');
 var del = require('del');
 var fs = require('fs');
-// var uuiPkg = require('./package.json');
-var uuiPkg = require('./node_modules/kero-adapter/package.json');
-var process = require('child_process');
+
+// 获取最新版本号
+var uuiPkg = require('./node_modules/neoui-kero/package.json');
+var uuiVersion = uuiPkg.version;
+var uuiDist = './dist/uui/' + uuiVersion;
 var originVersion = '2.0.1';
-
-var version = require('./version.js');
-var uuiDist = 'dist/uui/' + uuiPkg.version;
 var originDist = 'dist/uui/' + originVersion;
-
-var distModules = ['neoui', '', 'neoui-datetimepicker', 'neoui-grid', 'tree']
-
-var Stream = require('stream');
-
-
-
-var pathcopyjs = [
-    'node_modules/kero-adapter/dist/u-polyfill.js',
-    'node_modules/kero-adapter/dist/u-polyfill.min.js',
-    'node_modules/kero-adapter/dist/js/u.js',
-    'node_modules/kero-adapter/dist/js/u.min.js',
-    'node_modules/kero-adapter/dist/js/u-grid.js',
-    'node_modules/kero-adapter/dist/js/u-grid.min.js',
-    'node_modules/kero-adapter/dist/js/u-tree.js',
-    'node_modules/kero-adapter/dist/js/u-tree.min.js'
-]
-
-var pathOfCopyCSS = [
-    'node_modules/kero-adapter/dist/css/u.css',
-    'node_modules/kero-adapter/dist/css/u.min.css',
-    'node_modules/kero-adapter/dist/fonts/font-awesome/css/font-awesome.css',
-    'node_modules/kero-adapter/dist/fonts/font-awesome/css/font-awesome.min.css',
-    'node_modules/kero-adapter/dist/css/grid.css',
-    'node_modules/kero-adapter/dist/css/grid.min.css',
-    'node_modules/kero-adapter/dist/css/tree.css',
-    'node_modules/kero-adapter/dist/css/tree.min.css'
-]
-
-var notIncludeCss = '!'+ uuiDist + '/css/font-awesome' + '*' + '.css';
-
+var version = require('./version.js');
 
 /**
  * 公共错误处理函数
@@ -74,10 +41,33 @@ var errHandle = function ( err ) {
     this.end();
 }
 
-gulp.task('dirdist', function(){
-    return gulp.src(['./node_modules/kero-adapter/dist/**','./node_modules/kero-adapter/CHANGELOG-ALL.md'])
-        .pipe(gulp.dest(uuiDist + '/'))
+
+gulp.task('uuiUjs', function() {
+	return gulp.src(['./dist/js/moy.js','./node_modules/tinper-neoui/vendor/ui/*.js'])
+		.pipe(concat('u.js'))
+		.pipe(gulp.dest(uuiDist + '/js'))
+		.pipe(uglify())
+		.pipe(rename('u.min.js'))
+		.pipe(gulp.dest(uuiDist + '/js'));
+});
+
+
+gulp.task('dirdist',['uuiUjs'],function(){
+  gulp.src('./locales/**')
+		.pipe(gulp.dest(uuiDist + '/locales'))
+  gulp.src(['./node_modules/tinper-neoui/dist/css/**','./node_modules/tinper-neoui-grid/dist/css/**','./node_modules/tinper-neoui-tree/dist/css/**'])
+		.pipe(gulp.dest(uuiDist + '/css'));
+
+	gulp.src('./node_modules/tinper-neoui/dist/fonts/**')
+		.pipe(gulp.dest(uuiDist + '/fonts'));
+
+	gulp.src('./node_modules/tinper-neoui/dist/images/**')
+		.pipe(gulp.dest(uuiDist + '/images'));
+
+	gulp.src(['./node_modules/tinper-neoui-grid/dist/js/**', './node_modules/tinper-neoui-tree/dist/js/**','./node_modules/tinper-neoui-polyfill/dist/**','./node_modules/tinper-sparrow/dist/**'])
+		.pipe(gulp.dest(uuiDist + '/js'));
 })
+
 
 gulp.task('commit', ['dirdist'], function(){
     version.init([
@@ -98,14 +88,10 @@ gulp.task('commit', ['dirdist'], function(){
     ]);
 })
 
-
 gulp.task('dist', ['commit'], function(){
     gulp.run('down');
     gulp.run('new');
-    // gulp.run('origin');
 });
-
-
 
 /**
  * 下载新版体验
@@ -221,7 +207,9 @@ gulp.task("maven", ["install"], function(){
     console.info('publish  war success');
   });
 
-})
+});
+
+
 
 
 
@@ -232,7 +220,6 @@ var originGlobs = {
         uuiDist + '/js/u-polyfill.js',
         uuiDist + '/js/u.js',
         uuiDist + '/js/u-grid.js',
-        uuiDist + '/js/u-tree.js',
         './compatible/src/dialog_.js',
         './compatible/u/validate.js',
         './compatible/u/autocomplete.js',
