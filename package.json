@@ -10,7 +10,8 @@
     "prod": "npm run es && npm run build",
     "product": "npm run es && npm run build && npm run dev",
     "utipbuild": "npm run product && gulp dist",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "upgrade": "npm uninstall tinper-sparrow compox compox-util tinper-neoui neoui-kero-mixin kero kero-fetch tinper-neoui-grid tinper-neoui-tree tinper-neoui-polyfill neoui-kero && npm install tinper-sparrow compox compox-util tinper-neoui neoui-kero-mixin kero kero-fetch tinper-neoui-grid tinper-neoui-tree tinper-neoui-polyfill neoui-kero --save"
   },
   "dependencies": {
     "compox": "^3.1.25",
