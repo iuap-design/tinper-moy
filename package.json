@@ -14,16 +14,17 @@
     "upgrade": "npm uninstall tinper-sparrow compox compox-util tinper-neoui neoui-kero-mixin kero kero-fetch tinper-neoui-grid tinper-neoui-tree tinper-neoui-polyfill neoui-kero && npm install tinper-sparrow compox compox-util tinper-neoui neoui-kero-mixin kero kero-fetch tinper-neoui-grid tinper-neoui-tree tinper-neoui-polyfill neoui-kero --save"
   },
   "dependencies": {
-    "compox": "^3.1.25",
-    "compox-util": "^3.1.25",
-    "kero": "^3.1.25",
-    "kero-fetch": "^3.1.25",
-    "neoui-kero-mixin": "^3.1.25",
-    "tinper-neoui": "^3.1.25",
-    "tinper-neoui-grid": "^3.1.25",
-    "tinper-neoui-polyfill": "^3.1.25",
-    "tinper-neoui-tree": "^3.1.25",
-    "tinper-sparrow": "^3.1.25"
+    "compox": "^3.1.26",
+    "compox-util": "^3.1.26",
+    "kero": "^3.1.26",
+    "kero-fetch": "^3.1.26",
+    "neoui-kero": "^3.1.26",
+    "neoui-kero-mixin": "^3.1.26",
+    "tinper-neoui": "^3.1.26",
+    "tinper-neoui-grid": "^3.1.26",
+    "tinper-neoui-polyfill": "^3.1.26",
+    "tinper-neoui-tree": "^3.1.26",
+    "tinper-sparrow": "^3.1.26"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
