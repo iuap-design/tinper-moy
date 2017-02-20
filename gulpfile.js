@@ -220,6 +220,7 @@ var originGlobs = {
         uuiDist + '/js/u-polyfill.js',
         uuiDist + '/js/u.js',
         uuiDist + '/js/u-grid.js',
+        uuiDist + '/js/u-tree.js',
         './compatible/src/dialog_.js',
         './compatible/u/validate.js',
         './compatible/u/autocomplete.js',

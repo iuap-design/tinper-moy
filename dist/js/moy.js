@@ -26274,7 +26274,9 @@
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.updateDataTables = exports.addAllDataTables = exports.addDataTables = exports.addDataTable = undefined;
 
 	var _util = __webpack_require__(5);
@@ -26348,7 +26350,9 @@
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.setSuccessFunc = exports._successFunc = exports.fire = undefined;
 
 	var _extend = __webpack_require__(2);
@@ -26433,7 +26437,9 @@
 
 	"use strict";
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	/**
 	 * Module : kero app serverEvent processXHRError
 	 * Author : liuyk(liuyk@yonyou.com)
@@ -26462,7 +26468,9 @@
 
 	'use strict';
 
-	exports.__esModule = true;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	exports.updateDom = exports.getData = exports.setEvent = exports.addParameter = exports.setCompression = undefined;
 
 	var _util = __webpack_require__(5);
