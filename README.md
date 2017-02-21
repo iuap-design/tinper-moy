@@ -4,15 +4,17 @@
 
 ## Introduction
 
+`moy` 框架核心思想是对 `MVVM` 架构中 `Model` 前端数据层的强化和沉淀，并通过独有的 `u-meta` 标示来实现从 `UI` 到数据的自动映射和数据绑定
+
 `moy` — 取名自中文名墨渊的简称，寓意战神，强大，和值得信任的战斗力。
 
-`moy` 核心思想是对 `MVVM` 架构中 `Model` 前端数据层的强化和沉淀，并通过独有的 `u-meta` 标示来实现从 `UI` 到数据的自动映射和数据绑定
+<img src="./moy.jpg" />
 
-## Getting-started & Examples
+## Getting-started 
 
 快速上手示例和几个典型场景写法
 
-## API & DOCS
+## DOCS
 
 如何使用：
 
