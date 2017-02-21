@@ -1,6 +1,6 @@
 # moy
 
-`moy` 是基于模型框架 `kero` 和 `UI` 框架 `neoui` 实现的应用框架，快速构建数据驱动型应用。
+`moy` 是基于模型框架 [kero](https://github.com/iuap-design/kero) 和 `UI` 框架 [neoui](https://github.com/iuap-design/tinper-neoui) 实现的应用框架，快速构建数据驱动型应用。
 
 ## Introduction
 
@@ -23,8 +23,7 @@
 
 ## Contribute
 
-如何参与
-
+如何参与 `moy` 开发，请阅读[Contribute 文档](./.CONTRIBUTE.md)
 ## License
 
 MIT License
@@ -37,5 +36,3 @@ Copyright (c) 2017 Yonyou FED
 - [ ] [产出整体资源至dist目录下对应版本号（整理后的产出文件以及兼容之前的u.js）]()
 - [ ] [产出多种不同版本：兼容原有版本的2.0.1版本、带有kero-fetch的版本、默认推荐使用的正常版本、min版本等]()
 - [ ] [将moy框架资源发布maven镜像仓库]()
-*
-*
