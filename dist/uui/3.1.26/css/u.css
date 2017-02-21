@@ -5,7 +5,7 @@
  * homepage : https://github.com/iuap-design/tinper-neoui#readme
  * bugs : https://github.com/iuap-design/tinper-neoui/issues
  **/ 
-
+@import 'u.core.css';
 @charset "UTF-8";
 .ac_results {
   padding: 0px;
