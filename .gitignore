@@ -40,4 +40,5 @@ jspm_packages
 
 /dist/download
 /dist/uui
+/dist
 iuap-design.war
