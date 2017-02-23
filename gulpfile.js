@@ -7,6 +7,8 @@ var uglify = require('gulp-uglify');
 var zip = require('gulp-zip');
 var del = require('del');
 var fs = require('fs');
+var process = require('child_process');
+
 
 // 获取最新版本号
 var uuiPkg = require('./node_modules/neoui-kero/package.json');
@@ -123,16 +125,23 @@ gulp.task('new', function() {
 
 // maven 配置信息
 
+// var publishConfig = {
+//     command: "mvn",
+//     repositoryId: "iUAP-Stagings",
+//     repositoryURL: "http://172.16.51.12:8081/nexus/content/repositories/iUAP-Stagings",
+//     artifactId: "iuap-design",
+//     groupId: "com.yonyou.iuap",
+//     version: uuiPkg.version
+// };
+
 var publishConfig = {
     command: "mvn",
     repositoryId: "iUAP-Stagings",
     repositoryURL: "http://172.16.51.12:8081/nexus/content/repositories/iUAP-Stagings",
     artifactId: "iuap-design",
     groupId: "com.yonyou.iuap",
-    version: uuiPkg.version
+    version: "3.1.0-hr"
 };
-
-
 
 /**
  * 打包为war

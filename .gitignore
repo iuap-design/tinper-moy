@@ -4,7 +4,7 @@ logs
 npm-debug.log*
 
 .DS_Store
-
+/dist/.DS_Store
 # Runtime data
 pids
 *.pid
@@ -37,3 +37,7 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+/dist/download
+/dist/uui
+iuap-design.war
