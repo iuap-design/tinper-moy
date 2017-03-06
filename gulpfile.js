@@ -18,6 +18,9 @@ var originVersion = '2.0.1';
 var originDist = 'dist/uui/' + originVersion;
 var version = require('./version.js');
 
+
+var otherDir = ['kero', 'kero-fetch', 'neoui-kero', 'neoui-kero-mixin', 'tinper-neoui', 'tinper-neoui-grid', 'tinper-neoui-polyfill', 'tinper-neoui-tree', 'tinper-sparrow'];
+var otherDirArray = [];
 /**
  * 公共错误处理函数
  * 使用示例：
@@ -26,7 +29,7 @@ var version = require('./version.js');
  * @param  {[type]} err [description]
  * @return {[type]}     [description]
  */
-var errHandle = function ( err ) {
+var errHandle = function(err) {
     // 报错文件名
     var fileName = err.fileName;
     // 报错类型
@@ -38,40 +41,89 @@ var errHandle = function ( err ) {
 
     var logInfo = '报错文件：' + fileName + '报错类型：' + name + '出错代码位置：' + loc.line + ',' + loc.column;
 
-    util.log( logInfo );
+    util.log(logInfo);
 
     this.end();
 }
 
 
 gulp.task('uuiUjs', function() {
-	return gulp.src(['./dist/js/moy.js','./node_modules/tinper-neoui/vendor/ui/*.js'])
-		.pipe(concat('u.js'))
-		.pipe(gulp.dest(uuiDist + '/js'))
-		.pipe(uglify())
-		.pipe(rename('u.min.js'))
-		.pipe(gulp.dest(uuiDist + '/js'));
+    return gulp.src(['./dist/js/moy.js', './node_modules/tinper-neoui/vendor/ui/*.js'])
+        .pipe(concat('u.js'))
+        .pipe(gulp.dest(uuiDist + '/js'))
+        .pipe(uglify())
+        .pipe(rename('u.min.js'))
+        .pipe(gulp.dest(uuiDist + '/js'));
 });
 
 
-gulp.task('dirdist',['uuiUjs'],function(){
-  gulp.src('./locales/**')
-		.pipe(gulp.dest(uuiDist + '/locales'))
-  gulp.src(['./node_modules/tinper-neoui/dist/css/**','./node_modules/tinper-neoui-grid/dist/css/**','./node_modules/tinper-neoui-tree/dist/css/**'])
-		.pipe(gulp.dest(uuiDist + '/css'));
 
-	gulp.src('./node_modules/tinper-neoui/dist/fonts/**')
-		.pipe(gulp.dest(uuiDist + '/fonts'));
+gulp.task('dirdist', ['uuiUjs'], function() {
+    gulp.src('./locales/**')
+        .pipe(gulp.dest(uuiDist + '/locales'))
+    gulp.src(['./node_modules/tinper-neoui/dist/css/**', './node_modules/tinper-neoui-grid/dist/*.css', './node_modules/tinper-neoui-tree/dist/*.css'])
+        .pipe(rename(function(path) {
+            if (path.basename) {
+                // console.log('basename-----' + path.basename);
+                if (path.basename == 'tinper-neoui' || path.basename == 'tinper-neoui.min' || path.basename.indexOf('tinper-neoui.core') > -1) {
+                    path.basename = path.basename.replace('tinper-neoui', 'u');
+                }
+                if (path.basename.indexOf('tinper-neoui-grid') > -1) {
+                    path.basename = path.basename.replace('tinper-neoui-grid', 'grid');
+                }
+                if (path.basename.indexOf('tinper-neoui-tree') > -1) {
+                    path.basename = path.basename.replace('tinper-neoui-tree', 'tree');
+                }
+            }
+        }))
+        .pipe(gulp.dest(uuiDist + '/css'));
 
-	gulp.src('./node_modules/tinper-neoui/dist/images/**')
-		.pipe(gulp.dest(uuiDist + '/images'));
+    gulp.src('./node_modules/tinper-neoui/dist/fonts/**')
+        .pipe(gulp.dest(uuiDist + '/fonts'));
 
-	gulp.src(['./node_modules/tinper-neoui-grid/dist/js/**', './node_modules/tinper-neoui-tree/dist/js/**','./node_modules/tinper-neoui-polyfill/dist/**','./node_modules/tinper-sparrow/dist/**'])
-		.pipe(gulp.dest(uuiDist + '/js'));
+    gulp.src('./node_modules/tinper-neoui/dist/images/**')
+        .pipe(gulp.dest(uuiDist + '/images'));
+
+    return gulp.src(['./node_modules/tinper-neoui-grid/dist/*.js', './node_modules/tinper-neoui-tree/dist/*.js', './node_modules/tinper-neoui-polyfill/dist/tinper-neoui-polyfill.*', './node_modules/tinper-sparrow/dist/**'])
+        .pipe(rename(function(path) {
+
+            if (path.basename) {
+                // console.log('basename-----' + path.basename);
+                if (path.basename.indexOf('tinper-neoui-grid') > -1) {
+                    path.basename = path.basename.replace('tinper-neoui-grid', 'u-grid');
+                }
+                if (path.basename.indexOf('tinper-neoui-tree') > -1) {
+                    path.basename = path.basename.replace('tinper-neoui-tree', 'u-tree');
+                }
+                if (path.basename.indexOf('tinper-sparrow') > -1) {
+                    path.basename = path.basename.replace('tinper-sparrow', 'sparrow');
+                }
+                if (path.basename.indexOf('tinper-neoui-polyfill') > -1) {
+                    path.basename = path.basename.replace('tinper-neoui-polyfill', 'u-polyfill');
+                }
+            }
+
+        }))
+        .pipe(gulp.dest(uuiDist + '/js'));
 })
 
+// 将其他目录的dist拷贝到moy的dist下
 
-gulp.task('commit', ['dirdist'], function(){
+gulp.task('otherdirdist', function() {
+    var tempversion, tempPkg, tempPkgPath, tempDist, originDist;
+    for (var i = 0; i < otherDir.length; i++) {
+        tempPkgPath = './node_modules/' + otherDir[i] + '/package.json';
+        tempPkg = require(tempPkgPath);
+        tempversion = tempPkg.version;
+        tempDist = './dist/' + otherDir[i] + '/' + tempversion;
+        otherDirArray.push(tempDist);
+        originDist = './node_modules/' + otherDir[i] + '/dist/**';
+        gulp.src(originDist)
+            .pipe(gulp.dest(tempDist));
+    }
+})
+
+gulp.task('commit', ['dirdist', 'otherdirdist'], function() {
     version.init([
         uuiDist + '/js/u-polyfill.js',
         uuiDist + '/js/u-polyfill.min.js',
@@ -90,7 +142,7 @@ gulp.task('commit', ['dirdist'], function(){
     ]);
 })
 
-gulp.task('dist', ['commit'], function(){
+gulp.task('dist', ['commit'], function() {
     gulp.run('down');
     gulp.run('new');
 });
@@ -116,6 +168,11 @@ gulp.task('down', ['newpack'], function() {
  * @return {[type]}   [description]
  */
 gulp.task('new', function() {
+    var originPath, destPath;
+    for (var i = 0; i < otherDirArray.length; i++) {
+        gulp.src(otherDirArray[i] + '/**')
+            .pipe(gulp.dest('dist/' + otherDir[i] + '/latest'));
+    }
     return gulp.src(uuiDist + '/**')
         .pipe(gulp.dest('dist/uui/latest'));
 })
@@ -149,12 +206,12 @@ var publishConfig = {
  * @param  {[type]} function( [description]
  * @return {[type]}           [description]
  */
-gulp.task("package", function(){
-  gulp.src('./dist/uui/latest/**')
-      .pipe(zip('iuap-design.war'))
-      .pipe(gulp.dest('./'));
+gulp.task("package", function() {
+    gulp.src('./dist/uui/latest/**')
+        .pipe(zip('iuap-design.war'))
+        .pipe(gulp.dest('./'));
 
-  console.info('package ok!');
+    console.info('package ok!');
 });
 
 /**
@@ -163,29 +220,29 @@ gulp.task("package", function(){
  * @param  {[type]} function( [description]
  * @return {[type]}           [description]
  */
-gulp.task("install", ["package"], function(){
+gulp.task("install", ["package"], function() {
 
-  var targetPath = fs.realpathSync('.');
+    var targetPath = fs.realpathSync('.');
 
-  // 安装命令
-  var installCommandStr = publishConfig.command +
-      " install:install-file -Dfile=" + targetPath +
-      "/iuap-design.war   -DgroupId="+ publishConfig.groupId +
-      " -DartifactId=" + publishConfig.artifactId +
-      "  -Dversion="+ publishConfig.version +" -Dpackaging=war";
+    // 安装命令
+    var installCommandStr = publishConfig.command +
+        " install:install-file -Dfile=" + targetPath +
+        "/iuap-design.war   -DgroupId=" + publishConfig.groupId +
+        " -DartifactId=" + publishConfig.artifactId +
+        "  -Dversion=" + publishConfig.version + " -Dpackaging=war";
 
-    var installWarProcess = process.exec(installCommandStr, function(err,stdout,stderr){
-        if(err) {
-            console.log('install war error:'+stderr);
+    var installWarProcess = process.exec(installCommandStr, function(err, stdout, stderr) {
+        if (err) {
+            console.log('install war error:' + stderr);
         }
     });
 
-    installWarProcess.stdout.on('data',function(data){
+    installWarProcess.stdout.on('data', function(data) {
         console.info(data);
     });
-    installWarProcess.on('exit',function(data){
-    console.info('install war success');
-  })
+    installWarProcess.on('exit', function(data) {
+        console.info('install war success');
+    })
 
 });
 
@@ -196,25 +253,25 @@ gulp.task("install", ["package"], function(){
  * @param  {[type]} function(   [description]
  * @return {[type]}             [description]
  */
-gulp.task("maven", ["install"], function(){
-  var targetPath = fs.realpathSync('.');
+gulp.task("maven", ["install"], function() {
+    var targetPath = fs.realpathSync('.');
 
-  var publishCommandStr =  publishConfig.command + " deploy:deploy-file  -Dfile="+ targetPath+"/iuap-design.war   -DgroupId="+ publishConfig.groupId +" -DartifactId="+ publishConfig.artifactId +"  -Dversion="+ publishConfig.version +" -Dpackaging=war  -DrepositoryId="+ publishConfig.repositoryId +" -Durl=" +publishConfig.repositoryURL;
+    var publishCommandStr = publishConfig.command + " deploy:deploy-file  -Dfile=" + targetPath + "/iuap-design.war   -DgroupId=" + publishConfig.groupId + " -DartifactId=" + publishConfig.artifactId + "  -Dversion=" + publishConfig.version + " -Dpackaging=war  -DrepositoryId=" + publishConfig.repositoryId + " -Durl=" + publishConfig.repositoryURL;
 
-  console.info(publishCommandStr);
+    console.info(publishCommandStr);
 
-  var publishWarProcess =   process.exec(publishCommandStr, function(err,stdout,stderr){
-    if(err) {
-      console.log('publish war error:'+stderr);
-    }
-  });
+    var publishWarProcess = process.exec(publishCommandStr, function(err, stdout, stderr) {
+        if (err) {
+            console.log('publish war error:' + stderr);
+        }
+    });
 
-  publishWarProcess.stdout.on('data',function(data){
-    console.info(data);
-  });
-  publishWarProcess.on('exit',function(data){
-    console.info('publish  war success');
-  });
+    publishWarProcess.stdout.on('data', function(data) {
+        console.info(data);
+    });
+    publishWarProcess.on('exit', function(data) {
+        console.info('publish  war success');
+    });
 
 });
 
@@ -224,7 +281,7 @@ gulp.task("maven", ["install"], function(){
 
 /* 兼容之前 begin*/
 var originGlobs = {
-    js:[
+    js: [
         './compatible/biz/knockout-3.2.0.debug.js',
         uuiDist + '/js/u-polyfill.js',
         uuiDist + '/js/u.js',
@@ -265,50 +322,50 @@ gulp.task('originlocales', function() {
 });
 
 gulp.task('originexternal', function() {
-    return gulp.src('./compatible/external/*')  /*liuyk需要复制过去*/
+    return gulp.src('./compatible/external/*') /*liuyk需要复制过去*/
         .pipe(gulp.dest(originDist + '/external'))
 });
 
 
-gulp.task('originassets', ['originlocales', 'originexternal'], function(){
+gulp.task('originassets', ['originlocales', 'originexternal'], function() {
     return gulp.src('./compatible/assets/**')
         .pipe(gulp.dest(originDist + ''))
 });
 
 /* 替换knockoutjs*/
-gulp.task('replaceko',['originujs'], function(){
+gulp.task('replaceko', ['originujs'], function() {
     var fs = require('fs');
-    fs.readFile( originDist + '/js/u.js',function(err,data){
-        if(err) throw err;
+    fs.readFile(originDist + '/js/u.js', function(err, data) {
+        if (err) throw err;
         var data = data.toString(),
             replace_str = 'factory(window["ko"] = {});',
             index = data.indexOf('// Support three module loading scenarios');
-        if(index>0){
-            var string = data.substring(index,data.indexOf('}(function(koExports, require){'))
-            data = data.replace(string,replace_str);
-            fs.writeFile(originDist + '/js/u.js',data,function(err){
-                if(err) throw err;
+        if (index > 0) {
+            var string = data.substring(index, data.indexOf('}(function(koExports, require){'))
+            data = data.replace(string, replace_str);
+            fs.writeFile(originDist + '/js/u.js', data, function(err) {
+                if (err) throw err;
                 console.log('has finished');
             });
         }
     });
     return gulp.src(originDist + '/js/u.js')
-            .pipe(uglify()).on('error', errHandle)
-            .pipe(rename('u.min.js'))
-            .pipe(gulp.dest(originDist + '/js'));
+        .pipe(uglify()).on('error', errHandle)
+        .pipe(rename('u.min.js'))
+        .pipe(gulp.dest(originDist + '/js'));
 });
 
 /* JS直接使用新的JS加上兼容js*/
-gulp.task('originujs',function(){
+gulp.task('originujs', function() {
     return gulp.src(originGlobs.js)
-            .pipe(concat('u.js'))
-            .pipe(gulp.dest(originDist + '/js'))
-            .pipe(uglify()).on('error', errHandle)
-            .pipe(rename('u.min.js'))
-            .pipe(gulp.dest(originDist + '/js'));
+        .pipe(concat('u.js'))
+        .pipe(gulp.dest(originDist + '/js'))
+        .pipe(uglify()).on('error', errHandle)
+        .pipe(rename('u.min.js'))
+        .pipe(gulp.dest(originDist + '/js'));
 });
 
-gulp.task('originjs', ['replaceko'],function() {
+gulp.task('originjs', ['replaceko'], function() {
 
 });
 
@@ -324,33 +381,33 @@ gulp.task('originless:ui', function() {
         .pipe(gulp.dest(originDist + '/css'));
 });
 
-gulp.task('originlessgrid', function(){
-    return gulp.src([uuiDist + '/css/grid.css',uuiDist + '/css/grid.min.css'])
+gulp.task('originlessgrid', function() {
+    return gulp.src([uuiDist + '/css/grid.css', uuiDist + '/css/grid.min.css'])
         .pipe(gulp.dest(originDist + '/css'))
 });
 
-gulp.task('originlesstree', function(){
-    return gulp.src([uuiDist + '/css/tree.css',uuiDist + '/css/tree.min.css'])
+gulp.task('originlesstree', function() {
+    return gulp.src([uuiDist + '/css/tree.css', uuiDist + '/css/tree.min.css'])
         .pipe(gulp.dest(originDist + '/css'))
 });
 
-gulp.task('originlessucore', function(){
-    return gulp.src([uuiDist + '/css/u.core.css',uuiDist + '/css/u.core.min.css'])
+gulp.task('originlessucore', function() {
+    return gulp.src([uuiDist + '/css/u.core.css', uuiDist + '/css/u.core.min.css'])
         .pipe(gulp.dest(originDist + '/css'))
 });
 
 
-gulp.task('originless',['originless:ui','originlessucore','originlesstree','originlessgrid'], function() {
+gulp.task('originless', ['originless:ui', 'originlessucore', 'originlesstree', 'originlessgrid'], function() {
     var data = fs.readFileSync(uuiDist + '/css/u.css', 'utf8');
-    data = data.replace('@import \'u.core.css\';','');
+    data = data.replace('@import \'u.core.css\';', '');
     fs.writeFileSync(uuiDist + '/css/u.css', data);
 
-    return gulp.src([uuiDist + '/css/u.css','./compatible/css/u.css'])
-            .pipe(concat('u.css'))
-            .pipe(gulp.dest(originDist + '/css'))
-            .pipe(minifycss())
-            .pipe(concat('u.min.css'))
-            .pipe(gulp.dest(originDist + '/css'));
+    return gulp.src([uuiDist + '/css/u.css', './compatible/css/u.css'])
+        .pipe(concat('u.css'))
+        .pipe(gulp.dest(originDist + '/css'))
+        .pipe(minifycss())
+        .pipe(concat('u.min.css'))
+        .pipe(gulp.dest(originDist + '/css'));
 
 });
 ///////////////////////////////////////
@@ -363,7 +420,7 @@ gulp.task('origincopy', function() {
 
 })
 
-gulp.task('origin', ['originassets', 'originjs', 'originless', 'origincopy'],function(){
+gulp.task('origin', ['originassets', 'originjs', 'originless', 'origincopy'], function() {
     var data = fs.readFileSync(originDist + '/css/u.css', 'utf8');
     cssheaderStr = '@import \'oldu.css\';\r\n@import \'u.core.css\';\r\n@import \'grid.css\';\r\n@import \'tree.css\';\r\n';
     data = cssheaderStr + data;
