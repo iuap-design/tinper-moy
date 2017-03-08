@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>树形视图 - vue.js</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="树形视图 - vue.js">
+        <meta property="og:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta property="og:image" content="https://cn.vuejs.org/images/logo.png">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="树形视图 - vue.js">
+        <meta name="twitter:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="twitter:image" content="https://cn.vuejs.org/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'>
+
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+
+        <!-- this needs to be loaded before guide's inline scripts -->
+        <script src="/js/vue.js"></script>
+        <script>window.PAGE_TYPE = "examples"</script>
+    </head>
+    <body class="docs">        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>Vue.js</span>
+  </a>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/v2/guide/" class="nav-link">教程</a></li>
+<li><a href="/v2/api/" class="nav-link">API</a></li>
+<li><a href="/v2/examples/" class="nav-link current">示例</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">社区</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+    <li><a href="https://vuejsjob.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container language">
+  <a class="nav-link">多语言</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://vuejs.org/" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/" class="nav-link" target="_blank">한국어</a></li>
+  </ul>
+</li>
+
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/v2/guide/" class="nav-link">教程</a></li>
+<li><a href="/v2/api/" class="nav-link">API</a></li>
+<li><a href="/v2/examples/" class="nav-link current">示例</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">社区</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+    <li><a href="https://vuejsjob.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container language">
+  <a class="nav-link">多语言</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://vuejs.org/" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/" class="nav-link" target="_blank">한국어</a></li>
+  </ul>
+</li>
+
+    </ul>
+    <div class="list">
+        <div class="main-sponsor">
+            <span>赞助者</span><br>
+            <a href="http://www.thedifferenceengine.io/" target="_blank"
+                style="background-color: #f3f3f3; padding: 10px 0">
+                <img src="/images/tde.png">
+            </a>
+        </div>
+        <a class="become-backer" href="/support-vuejs">
+            成为赞助者
+        </a>
+        <h2>
+            
+            
+                <select class="version-select">
+                    <option value="SELF" selected>2.0</option>
+                    <option value="v1">1.0</option>
+                </select>
+            
+        </h2>
+        <ul class="menu-root">
+            
+                
+
+                
+                
+                <li>
+                    <a href="/v2/examples/index.html" class="sidebar-link">Markdown 编辑器</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/v2/examples/commits.html" class="sidebar-link">GitHub 提交</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/v2/examples/firebase.html" class="sidebar-link">Firebase + 验证</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/v2/examples/grid-component.html" class="sidebar-link">网格组件</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/v2/examples/tree-view.html" class="sidebar-link current">树形视图</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/v2/examples/svg.html" class="sidebar-link">SVG 图表</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/v2/examples/modal.html" class="sidebar-link">模式组件</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/v2/examples/elastic-header.html" class="sidebar-link">具有伸缩性的 Header</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/v2/examples/select2.html" class="sidebar-link">内嵌组件</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/v2/examples/todomvc.html" class="sidebar-link">TodoMVC</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/v2/examples/hackernews.html" class="sidebar-link">HackerNews 克隆</a>
+                </li>
+            
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content examples with-sidebar ">
+    
+      <h1>树形视图 Example</h1>
+    
+    
+    <blockquote>
+<p>本示例是一个简单的树形视图实现，它展现了组件的递归使用。</p>
+</blockquote>
+<iframe width="100%" height="500" src="https://jsfiddle.net/yyx990803/3p0j5sgy/embedded/result,html,js,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+    
+    <div class="footer">
+      发现错误？想参与编辑？
+      <a href="https://github.com/vuejs/cn.vuejs.org/blob/master/src/v2/examples/tree-view.md" target="_blank">
+        在 Github 上编辑此页！
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/js/common.js"></script>
+
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46852172-1', 'cn.vuejs.org');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+        <script>
+        [
+          '#search-query-nav',
+          '#search-query-sidebar'
+        ].forEach(function (selector) {
+          if (!document.querySelector(selector)) return
+          // search index defaults to v2
+          var match = window.location.pathname.match(/^\/(v\d+)/)
+          var version = match ? match[1] : 'v2'
+          docsearch({
+            appId: 'BH4D9OD16A',
+            apiKey: '5638280abff9d207417bb03be05f0b25',
+            indexName: 'vuejs_cn2',
+            inputSelector: selector,
+            algoliaOptions: { facetFilters: ["version:" + version] }
+          })
+        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>

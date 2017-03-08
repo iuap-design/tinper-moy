@@ -1,0 +1,684 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>加入Vue.js社区 - vue.js</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="加入Vue.js社区 - vue.js">
+        <meta property="og:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta property="og:image" content="https://cn.vuejs.org/images/logo.png">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="加入Vue.js社区 - vue.js">
+        <meta name="twitter:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="twitter:image" content="https://cn.vuejs.org/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'>
+
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+
+        <!-- this needs to be loaded before guide's inline scripts -->
+        <script src="/js/vue.js"></script>
+        <script>window.PAGE_TYPE = "guide"</script>
+    </head>
+    <body class="docs">        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>Vue.js</span>
+  </a>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/v2/guide/" class="nav-link current">教程</a></li>
+<li><a href="/v2/api/" class="nav-link">API</a></li>
+<li><a href="/v2/examples/" class="nav-link">示例</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">社区</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+    <li><a href="https://vuejsjob.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container language">
+  <a class="nav-link">多语言</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://vuejs.org/" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/" class="nav-link" target="_blank">한국어</a></li>
+  </ul>
+</li>
+
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/v2/guide/" class="nav-link current">教程</a></li>
+<li><a href="/v2/api/" class="nav-link">API</a></li>
+<li><a href="/v2/examples/" class="nav-link">示例</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">社区</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/vue" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+    <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+    <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+    <li><a href="https://vuejsjob.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+  </ul>
+</li>
+<li class="nav-dropdown-container language">
+  <a class="nav-link">多语言</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://vuejs.org/" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/" class="nav-link" target="_blank">한국어</a></li>
+  </ul>
+</li>
+
+    </ul>
+    <div class="list">
+        <div class="main-sponsor">
+            <span>赞助者</span><br>
+            <a href="http://www.thedifferenceengine.io/" target="_blank"
+                style="background-color: #f3f3f3; padding: 10px 0">
+                <img src="/images/tde.png">
+            </a>
+        </div>
+        <a class="become-backer" href="/support-vuejs">
+            成为赞助者
+        </a>
+        <h2>
+            
+            
+                <select class="version-select">
+                    <option value="SELF" selected>2.0</option>
+                    <option value="v1">1.0</option>
+                </select>
+            
+        </h2>
+        <ul class="menu-root">
+            
+                
+
+                
+                    
+                      <li><h3>基础</h3></li>
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/installation.html" class="sidebar-link">安装</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/index.html" class="sidebar-link">介绍</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/instance.html" class="sidebar-link">Vue 实例</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/syntax.html" class="sidebar-link">模板语法</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/computed.html" class="sidebar-link">计算属性</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/class-and-style.html" class="sidebar-link">Class 与 Style 绑定</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/conditional.html" class="sidebar-link">条件渲染</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/list.html" class="sidebar-link">列表渲染</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/events.html" class="sidebar-link">事件处理器</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/forms.html" class="sidebar-link">表单控件绑定</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/components.html" class="sidebar-link">组件</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                      <li><h3>进阶</h3></li>
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/reactivity.html" class="sidebar-link">深入响应式原理</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/transitions.html" class="sidebar-link">过渡效果</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/transitioning-state.html" class="sidebar-link">过渡状态</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/render-function.html" class="sidebar-link">Render 函数</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/custom-directive.html" class="sidebar-link">自定义指令</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/mixins.html" class="sidebar-link">混合</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/plugins.html" class="sidebar-link">插件</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/single-file-components.html" class="sidebar-link">单文件组件</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/deployment.html" class="sidebar-link">生产环境部署</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/routing.html" class="sidebar-link">路由</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/state-management.html" class="sidebar-link">状态管理</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/unit-testing.html" class="sidebar-link">单元测试</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/ssr.html" class="sidebar-link">服务端渲染</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                      <li><h3>迁移</h3></li>
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/migration.html" class="sidebar-link">从 Vue 1.x 迁移</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/migration-vue-router.html" class="sidebar-link">从 Vue Router 0.7.x 迁移</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/migration-vuex.html" class="sidebar-link">从 Vuex 0.6.x 迁移到 1.0</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                      <li><h3>更多</h3></li>
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/comparison.html" class="sidebar-link">对比其他框架</a>
+                </li>
+            
+                
+
+                
+                    
+                    
+                    
+                    
+                
+                
+                <li>
+                    <a href="/v2/guide/join.html" class="sidebar-link current">加入Vue.js社区</a>
+                </li>
+            
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content guide with-sidebar join-guide">
+    
+      <h1>加入Vue.js社区</h1>
+    
+    
+    <p>Vue.js 的社区正在急速增长中，如果你正在阅读本文，这是你准备好加入 Vue.js 社区的大好机会。欢迎！</p>
+<p>现在我们来解答你能从社区中获得什么以及你能为社区做什么。</p>
+<h2 id="你将享受的资源"><a href="#你将享受的资源" class="headerlink" title="你将享受的资源"></a>你将享受的资源</h2><h3 id="获取帮助"><a href="#获取帮助" class="headerlink" title="获取帮助"></a>获取帮助</h3><ul>
+<li><a href="http://forum.vuejs.org/" target="_blank" rel="external">论坛</a>：询问与 Vue 及其生态的相关问题的最佳地点。</li>
+<li><a href="https://gitter.im/vuejs/vue" target="_blank" rel="external">Gitter 频道</a>：开发者聊天室。你也可以在这儿提问，不过最好在论坛提问，因为论坛提供板块。</li>
+<li><a href="https://github.com/vuejs" target="_blank" rel="external">Github</a>：如果你想报告 bug 或者提交请求，欢迎来 Github 提交 issues 。我们也非常欢迎 pull requests！</li>
+</ul>
+<h3 id="探索生态"><a href="#探索生态" class="headerlink" title="探索生态"></a>探索生态</h3><ul>
+<li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="external">Awesome Vue</a>：一览其他牛人发布的优秀资源。</li>
+<li><a href="http://forum.vuejs.org/c/show-and-tell" target="_blank" rel="external">“Show and Tell” 子论坛</a>：又一个好地方，可以看看他人借助 Vue 生态完成的作品，以及他人为不断壮大的 Vue 生态的贡献。</li>
+</ul>
+<h2 id="你力所能及的"><a href="#你力所能及的" class="headerlink" title="你力所能及的"></a>你力所能及的</h2><h3 id="贡献代码"><a href="#贡献代码" class="headerlink" title="贡献代码"></a>贡献代码</h3><p>和所有的项目一样，贡献代码是有规范的。为了保证我们能尽快地帮助你解决问题或者接受你的 pull requests，请先阅读这份<a href="https://github.com/vuejs/vue/blob/dev/.github/CONTRIBUTING.md" target="_blank" rel="external">贡献指南</a>。</p>
+<p>阅读之后，你应该已经准备好向 Vue 的核心仓库贡献代码了：</p>
+<ul>
+<li><a href="https://github.com/vuejs/vue" target="_blank" rel="external">vue</a>: 核心库</li>
+<li><a href="https://github.com/vuejs/vuex" target="_blank" rel="external">vuex</a>: 类 Flux 的状态管理架构</li>
+<li><a href="https://github.com/vuejs/vue-router" target="_blank" rel="external">vue-router</a>: 为单页面应用提供的路由系统</li>
+</ul>
+<p>…还有许多小型的官方<a href="https://github.com/vuejs" target="_blank" rel="external">同伴库</a>。</p>
+<h2 id="分享（并构筑）你的见识"><a href="#分享（并构筑）你的见识" class="headerlink" title="分享（并构筑）你的见识"></a>分享（并构筑）你的见识</h2><p>除了在论坛域 Gitter 频道回答问题、分享资源外，还有一些更小众的方式可以分享并增长你的见识：</p>
+<ul>
+<li><strong>开发学习资料。</strong>常说最好的学习方式就是教导。如果你正在用 Vue 做一些有趣的事情，你可以写一篇博客、组织研讨会、甚至创建一个gist，然后分享到社交平台：这些都能加强你的专项知识。</li>
+<li><strong>关注（watch）你关心的仓库。</strong>这样无论何时该仓库有新的动静，它都会第一时间通知你，提供关于正在进行的讨论以及即将到来的新特性的新鲜情报。这是超棒的提高专门知识的方法，然后你将终于有能力来解决问题（issues）并提交 pull requests。</li>
+</ul>
+<h3 id="翻译文档"><a href="#翻译文档" class="headerlink" title="翻译文档"></a>翻译文档</h3><p>Vue 已经在全球范围内传播开来，核心团队成员甚至来自至少 6 个时区。<a href="http://forum.vuejs.org/" target="_blank" rel="external">论坛</a> 已有 7 种语言，数字还在持续增长。我们许多文档都有<a href="https://github.com/vuejs?utf8=%E2%9C%93&amp;query=vuejs.org" target="_blank" rel="external">积极维护的翻译</a>。我们非常为 Vue 的国际影响力骄傲，但我们还能做得更好。</p>
+<p>我希望现在你正在使用你的首选语言阅读这个句子。如果不是，你愿意帮我们实现它吗？</p>
+<p>如果你愿意的话，请随时为<a href="https://github.com/vuejs/vuejs.org/" target="_blank" rel="external">这些文档</a>，或者官方维护的其他文档 fork 这个仓库，然后开始翻译吧。只要你取得了进展，就请在主仓库开一个 issue 或者 pull request，我们将号召更多的贡献者来帮助你。</p>
+<hr>
+<blockquote>
+<p>原文： <a href="http://vuejs.org/guide/join.html" target="_blank" rel="external">http://vuejs.org/guide/join.html</a></p>
+</blockquote>
+<hr>
+
+    
+      <div class="guide-links">
+        
+          <span>← <a href="/v2/guide/comparison.html">对比其他框架</a></span>
+        
+        
+      </div>
+    
+    <div class="footer">
+      发现错误？想参与编辑？
+      <a href="https://github.com/vuejs/cn.vuejs.org/blob/master/src/v2/guide/join.md" target="_blank">
+        在 Github 上编辑此页！
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/js/common.js"></script>
+
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46852172-1', 'cn.vuejs.org');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+        <script>
+        [
+          '#search-query-nav',
+          '#search-query-sidebar'
+        ].forEach(function (selector) {
+          if (!document.querySelector(selector)) return
+          // search index defaults to v2
+          var match = window.location.pathname.match(/^\/(v\d+)/)
+          var version = match ? match[1] : 'v2'
+          docsearch({
+            appId: 'BH4D9OD16A',
+            apiKey: '5638280abff9d207417bb03be05f0b25',
+            indexName: 'vuejs_cn2',
+            inputSelector: selector,
+            algoliaOptions: { facetFilters: ["version:" + version] }
+          })
+        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>
