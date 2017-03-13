@@ -123,7 +123,12 @@ gulp.task('otherdirdist', function() {
     }
 })
 
-gulp.task('commit', ['dirdist', 'otherdirdist'], function() {
+gulp.task('locales',function(){
+  gulp.src('./locales/**')
+      .pipe(gulp.dest(uuiDist + '/locales'));
+})
+
+gulp.task('commit', ['dirdist', 'otherdirdist','locales'], function() {
     version.init([
         uuiDist + '/js/u-polyfill.js',
         uuiDist + '/js/u-polyfill.min.js',
@@ -152,7 +157,7 @@ gulp.task('dist', ['commit'], function() {
  * @return {[type]}   [description]
  */
 gulp.task('newpack', function() {
-    return gulp.src([uuiDist + '/**/*', 'dist/download/temp/*.*'])
+    return gulp.src([uuiDist + '/**/*', 'download/temp/*.*'])
         .pipe(gulp.dest('dist/download/' + 'iuap-design-' + uuiPkg.version))
         .pipe(zip('iuap-design-' + uuiPkg.version + '.zip'))
         .pipe(gulp.dest('dist/download'));
