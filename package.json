@@ -9,7 +9,7 @@
     "es": "babel src -d lib",
     "prod": "npm run es && npm run build",
     "product": "npm run es && npm run build && npm run dev",
-    "utipbuild": "npm run product && gulp dist",
+    "utipbuild": "npm run product && gulp dist && gulp 4needs && gulp 4needsDown",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "upgrade": "npm uninstall tinper-sparrow compox compox-util tinper-neoui neoui-kero-mixin kero kero-fetch tinper-neoui-grid tinper-neoui-tree tinper-neoui-polyfill neoui-kero && npm install tinper-sparrow compox compox-util tinper-neoui neoui-kero-mixin kero kero-fetch tinper-neoui-grid tinper-neoui-tree tinper-neoui-polyfill neoui-kero --save",
     "deploy": "npm run upgrade && npm run product && gulp dist"

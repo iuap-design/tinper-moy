@@ -123,12 +123,12 @@ gulp.task('otherdirdist', function() {
     }
 })
 
-gulp.task('locales',function(){
-  gulp.src('./locales/**')
-      .pipe(gulp.dest(uuiDist + '/locales'));
+gulp.task('locales', function() {
+    gulp.src('./locales/**')
+        .pipe(gulp.dest(uuiDist + '/locales'));
 })
 
-gulp.task('commit', ['dirdist', 'otherdirdist','locales'], function() {
+gulp.task('commit', ['dirdist', 'otherdirdist', 'locales'], function() {
     version.init([
         uuiDist + '/js/u-polyfill.js',
         uuiDist + '/js/u-polyfill.min.js',
@@ -145,6 +145,145 @@ gulp.task('commit', ['dirdist', 'otherdirdist','locales'], function() {
         uuiDist + '/css/tree.css',
         uuiDist + '/css/tree.min.css'
     ]);
+});
+
+
+gulp.task('4needsneoui', function() {
+    var neouiDir = './node_modules/tinper-neoui/dist';
+    var gridDir = './node_modules/tinper-neoui-grid/dist';
+    var treeDir = './node_modules/tinper-neoui-tree/dist';
+    var neoui2Dir = './dist/4needs/tinper-neoui/' + uuiVersion;
+    var neoui2DirLatest = './dist/4needs/tinper-neoui/latest';
+    gulp.src([neouiDir + '/css/*.css', gridDir + '/*.css', treeDir + '/*.css'])
+        .pipe(gulp.dest(neoui2Dir + '/full/css'))
+        .pipe(gulp.dest(neoui2DirLatest + '/full/css'));
+    gulp.src(neouiDir + '/fonts/**')
+        .pipe(gulp.dest(neoui2Dir + '/full/fonts'))
+        .pipe(gulp.dest(neoui2DirLatest + '/full/fonts'));
+    gulp.src(neouiDir + '/images/**')
+        .pipe(gulp.dest(neoui2Dir + '/full/images'))
+        .pipe(gulp.dest(neoui2DirLatest + '/full/images'));
+    gulp.src(['./node_modules/compox/dist/compox.js', neouiDir + '/js/tinper-neoui.js'])
+        .pipe(concat('tinper-neoui.js'))
+        .pipe(gulp.dest(neoui2Dir + '/full/js'))
+        .pipe(gulp.dest(neoui2DirLatest + '/full/js'))
+        .pipe(uglify())
+        .pipe(rename('tinper-neoui.min.js'))
+        .pipe(gulp.dest(neoui2Dir + '/full/js'))
+        .pipe(gulp.dest(neoui2DirLatest + '/full/js'));
+    gulp.src([gridDir + '/*.js', treeDir + '/*.js'])
+        .pipe(gulp.dest(neoui2Dir + '/full/js'))
+        .pipe(gulp.dest(neoui2DirLatest + '/full/js'));
+
+    gulp.src([neouiDir + '/css/component/*.css', neouiDir + '/css/font-awesome.css', neouiDir + '/css/font-awesome.min.css', gridDir + '/*.css', treeDir + '/*.css'])
+        .pipe(gulp.dest(neoui2Dir + '/component/css'))
+        .pipe(gulp.dest(neoui2DirLatest + '/component/css'));
+    gulp.src(neouiDir + '/fonts/**')
+        .pipe(gulp.dest(neoui2Dir + '/component/fonts'))
+        .pipe(gulp.dest(neoui2DirLatest + '/component/fonts'));
+    gulp.src(neouiDir + '/images/**')
+        .pipe(gulp.dest(neoui2Dir + '/component/images'))
+        .pipe(gulp.dest(neoui2DirLatest + '/component/images'));
+    gulp.src(['./node_modules/compox/dist/compox.js', neouiDir + '/js/component/neoui-BaseComponent.js'])
+        .pipe(concat('tinper-neoui-base.js'))
+        .pipe(gulp.dest(neoui2Dir + '/component/js'))
+        .pipe(gulp.dest(neoui2DirLatest + '/component/js'))
+        .pipe(uglify())
+        .pipe(rename('tinper-neoui-base.min.js'))
+        .pipe(gulp.dest(neoui2Dir + '/component/js'))
+        .pipe(gulp.dest(neoui2DirLatest + '/component/js'));
+    gulp.src([neouiDir + '/js/component/*.js', '!' + neouiDir + '/js/component/neoui-BaseComponent.js', '!' + neouiDir + '/js/component/neoui-BaseComponent.min.js'])
+        .pipe(gulp.dest(neoui2Dir + '/component/js'))
+        .pipe(gulp.dest(neoui2DirLatest + '/component/js'));
+    gulp.src([gridDir + '/*.js', treeDir + '/*.js'])
+        .pipe(gulp.dest(neoui2Dir + '/component/js'))
+        .pipe(gulp.dest(neoui2DirLatest + '/component/js'));
+});
+
+gulp.task('4needsneoui-kero', function() {
+    var neouiDir = './node_modules/tinper-neoui/dist';
+    var gridDir = './node_modules/tinper-neoui-grid/dist';
+    var treeDir = './node_modules/tinper-neoui-tree/dist';
+    var neouiKerDir = './node_modules/neoui-kero/dist';
+    var neouiKero2Dir = './dist/4needs/neoui-kero/' + uuiVersion;
+    var neouiKero2DirLatest = './dist/4needs/neoui-kero/latest';
+    gulp.src(neouiDir + '/css/*.css')
+        .pipe(gulp.dest(neouiKero2Dir + '/full/css'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/full/css'));
+    gulp.src(neouiDir + '/fonts/**')
+        .pipe(gulp.dest(neouiKero2Dir + '/full/fonts'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/full/fonts'));
+    gulp.src(neouiDir + '/images/**')
+        .pipe(gulp.dest(neouiKero2Dir + '/full/images'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/full/images'));
+    gulp.src(['./node_modules/compox/dist/compox.js', './node_modules/compox-util/dist/compox-util.js', './node_modules/kero/dist/kero.js', neouiDir + '/js/component/neoui-BaseComponent.js', neouiKerDir + '/js/neoui-kero.js'])
+        .pipe(concat('neoui-kero.js'))
+        .pipe(gulp.dest(neouiKero2Dir + '/full/js'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/full/js'))
+        .pipe(uglify())
+        .pipe(rename('neoui-kero.min.js'))
+        .pipe(gulp.dest(neouiKero2Dir + '/full/js'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/full/js'));
+    gulp.src([gridDir + '/*.js', treeDir + '/*.js'])
+        .pipe(gulp.dest(neouiKero2Dir + '/full/js'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/full/js'));
+
+
+    gulp.src([neouiDir + '/css/component/*.css', neouiDir + '/css/font-awesome.css', neouiDir + '/css/font-awesome.min.css', gridDir + '/*.css', treeDir + '/*.css'])
+        .pipe(gulp.dest(neouiKero2Dir + '/component/css'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/component/css'));
+    gulp.src(neouiDir + '/fonts/**')
+        .pipe(gulp.dest(neouiKero2Dir + '/component/fonts'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/component/fonts'));
+    gulp.src(neouiDir + '/images/**')
+        .pipe(gulp.dest(neouiKero2Dir + '/component/images'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/component/images'));
+    gulp.src(['./node_modules/compox/dist/compox.js', './node_modules/compox-util/dist/compox-util.js', './node_modules/kero/dist/kero.js', neouiDir + '/js/component/neoui-BaseComponent.js', neouiKerDir + '/component/keroa-baseAdapter.js'])
+        .pipe(concat('neoui-kero-base.js'))
+        .pipe(gulp.dest(neouiKero2Dir + '/component/js'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/component/js'))
+        .pipe(uglify())
+        .pipe(rename('neoui-kero-base.min.js'))
+        .pipe(gulp.dest(neouiKero2Dir + '/component/js'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/component/js'));
+    gulp.src([neouiKerDir + '/js/component/*.js', '!' + neouiKerDir + '/js/component/keroa-baseAdapter.js', '!' + neouiKerDir + '/js/component/keroa-baseAdapter.min.js'])
+        .pipe(gulp.dest(neouiKero2Dir + '/component/js'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/component/js'));
+    gulp.src([gridDir + '/*.js', treeDir + '/*.js'])
+        .pipe(gulp.dest(neouiKero2Dir + '/component/js'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/component/js'));
+
+});
+
+gulp.task('4needskero-fetch', function() {
+    gulp.src('./node_modules/kero-fetch/dist/*')
+        .pipe(gulp.dest('./dist/4needs/kero-fetch/' + uuiVersion))
+        .pipe(gulp.dest('./dist/4needs/kero-fetch/latest'));
+});
+
+gulp.task('4needstinper-neoui-polyfill', function() {
+    gulp.src('./node_modules/tinper-neoui-polyfill/dist/*')
+        .pipe(gulp.dest('./dist/4needs/tinper-neoui-polyfill/' + uuiVersion))
+        .pipe(gulp.dest('./dist/4needs/tinper-neoui-polyfill/latest'));
+});
+
+gulp.task('4needstinper-sparrow', function() {
+    gulp.src('./node_modules/tinper-sparrow/dist/*')
+        .pipe(gulp.dest('./dist/4needs/tinper-sparrow/' + uuiVersion))
+        .pipe(gulp.dest('./dist/4needs/tinper-sparrow/latest'));
+});
+
+gulp.task('4needs', ['4needsneoui', '4needsneoui-kero', '4needskero-fetch', '4needstinper-neoui-polyfill', '4needstinper-sparrow'], function() {
+
+});
+
+var needsDirs = ['kero-fetch', 'neoui-kero', 'tinper-neoui', 'tinper-neoui-polyfill', 'tinper-sparrow']
+gulp.task('4needsDown', function() {
+    for (var i = 0; i < needsDirs.length; i++) {
+        gulp.src('./dist/4needs/' + needsDirs[i] + '/' + uuiVersion + '/**')
+            .pipe(zip(needsDirs[i] + '-' + uuiVersion + '.zip'))
+            .pipe(gulp.dest('dist/download'));
+    }
 })
 
 gulp.task('dist', ['commit'], function() {
