@@ -61,7 +61,7 @@ gulp.task('uuiUjs', function() {
 gulp.task('dirdist', ['uuiUjs'], function() {
     gulp.src('./locales/**')
         .pipe(gulp.dest(uuiDist + '/locales'))
-    gulp.src(['./node_modules/tinper-neoui/dist/css/**', './node_modules/tinper-neoui-grid/dist/*.css', './node_modules/tinper-neoui-tree/dist/*.css'])
+    gulp.src(['./node_modules/tinper-neoui/dist/css/**', '!./node_modules/tinper-neoui/dist/css/component/', '!./node_modules/tinper-neoui/dist/css/component/**', './node_modules/tinper-neoui-grid/dist/*.css', './node_modules/tinper-neoui-tree/dist/*.css'])
         .pipe(rename(function(path) {
             if (path.basename) {
                 // console.log('basename-----' + path.basename);
@@ -84,7 +84,7 @@ gulp.task('dirdist', ['uuiUjs'], function() {
     gulp.src('./node_modules/tinper-neoui/dist/images/**')
         .pipe(gulp.dest(uuiDist + '/images'));
 
-    return gulp.src(['./node_modules/tinper-neoui-grid/dist/*.js', './node_modules/tinper-neoui-tree/dist/*.js', './node_modules/tinper-neoui-polyfill/dist/tinper-neoui-polyfill.*', './node_modules/tinper-sparrow/dist/**'])
+    return gulp.src(['./node_modules/tinper-neoui-grid/dist/*.js', './node_modules/tinper-neoui-tree/dist/*.js', './node_modules/tinper-neoui-polyfill/dist/tinper-neoui-polyfill.*'])
         .pipe(rename(function(path) {
 
             if (path.basename) {
@@ -94,9 +94,6 @@ gulp.task('dirdist', ['uuiUjs'], function() {
                 }
                 if (path.basename.indexOf('tinper-neoui-tree') > -1) {
                     path.basename = path.basename.replace('tinper-neoui-tree', 'u-tree');
-                }
-                if (path.basename.indexOf('tinper-sparrow') > -1) {
-                    path.basename = path.basename.replace('tinper-sparrow', 'sparrow');
                 }
                 if (path.basename.indexOf('tinper-neoui-polyfill') > -1) {
                     path.basename = path.basename.replace('tinper-neoui-polyfill', 'u-polyfill');
@@ -129,6 +126,9 @@ gulp.task('locales', function() {
 })
 
 gulp.task('commit', ['dirdist', 'otherdirdist', 'locales'], function() {
+  gulp.src('./docs/各场景资源文件说明/allREADME.md')
+      .pipe(gulp.dest(uuiDist + '/'))
+      .pipe(gulp.dest('./dist/uui/latest/'))
     version.init([
         uuiDist + '/js/u-polyfill.js',
         uuiDist + '/js/u-polyfill.min.js',
@@ -154,6 +154,9 @@ gulp.task('4needsneoui', function() {
     var treeDir = './node_modules/tinper-neoui-tree/dist';
     var neoui2Dir = './dist/4needs/tinper-neoui/' + uuiVersion;
     var neoui2DirLatest = './dist/4needs/tinper-neoui/latest';
+    gulp.src('./docs/各场景资源文件说明/neouiREADME.md')
+        .pipe(gulp.dest(neoui2Dir + '/'))
+        .pipe(gulp.dest(neoui2DirLatest + '/'))
     gulp.src([neouiDir + '/css/*.css', gridDir + '/*.css', treeDir + '/*.css'])
         .pipe(gulp.dest(neoui2Dir + '/full/css'))
         .pipe(gulp.dest(neoui2DirLatest + '/full/css'));
@@ -207,6 +210,9 @@ gulp.task('4needsneoui-kero', function() {
     var neouiKerDir = './node_modules/neoui-kero/dist';
     var neouiKero2Dir = './dist/4needs/neoui-kero/' + uuiVersion;
     var neouiKero2DirLatest = './dist/4needs/neoui-kero/latest';
+    gulp.src('./docs/各场景资源文件说明/neouikeroREADME.md')
+        .pipe(gulp.dest(neouiKero2Dir + '/'))
+        .pipe(gulp.dest(neouiKero2DirLatest + '/'))
     gulp.src(neouiDir + '/css/*.css')
         .pipe(gulp.dest(neouiKero2Dir + '/full/css'))
         .pipe(gulp.dest(neouiKero2DirLatest + '/full/css'));
@@ -256,18 +262,27 @@ gulp.task('4needsneoui-kero', function() {
 });
 
 gulp.task('4needskero-fetch', function() {
+  gulp.src('./docs/各场景资源文件说明/kerofetchREADME.md')
+      .pipe(gulp.dest('./dist/4needs/kero-fetch/' + uuiVersion + '/'))
+      .pipe(gulp.dest('./dist/4needs/kero-fetch/latest/'))
     gulp.src('./node_modules/kero-fetch/dist/*')
         .pipe(gulp.dest('./dist/4needs/kero-fetch/' + uuiVersion))
         .pipe(gulp.dest('./dist/4needs/kero-fetch/latest'));
 });
 
 gulp.task('4needstinper-neoui-polyfill', function() {
+  gulp.src('./docs/各场景资源文件说明/polyfillREADME.md')
+      .pipe(gulp.dest('./dist/4needs/tinper-neoui-polyfill/' + uuiVersion + '/'))
+      .pipe(gulp.dest('./dist/4needs/tinper-neoui-polyfill/latest/'))
     gulp.src('./node_modules/tinper-neoui-polyfill/dist/*')
         .pipe(gulp.dest('./dist/4needs/tinper-neoui-polyfill/' + uuiVersion))
         .pipe(gulp.dest('./dist/4needs/tinper-neoui-polyfill/latest'));
 });
 
 gulp.task('4needstinper-sparrow', function() {
+  gulp.src('./docs/各场景资源文件说明/sparrowREADME.md')
+    .pipe(gulp.dest('./dist/4needs/tinper-sparrow/' + uuiVersion + '/'))
+    .pipe(gulp.dest('./dist/4needs/tinper-sparrow/latest/'))
     gulp.src('./node_modules/tinper-sparrow/dist/*')
         .pipe(gulp.dest('./dist/4needs/tinper-sparrow/' + uuiVersion))
         .pipe(gulp.dest('./dist/4needs/tinper-sparrow/latest'));
