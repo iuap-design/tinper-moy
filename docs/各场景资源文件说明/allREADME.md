@@ -1,0 +1,15 @@
+## 完整版
+* css：css资源
+     *   font-awesome.css：图标字体css资源
+     *   grid.css：表格控件css资源
+     *   tree.css：树控件css资源
+     *   u.css：框架css资源
+     *   u.core.css：框架css资源，由于IE对css大小有限制，因此拆为2个单独文件，u.css中会引用此文件。使用时只需要引入u.css
+* fonts：图标字体资源文件，只需放入工程，不需要单独引用
+* images：图片资源，只需放入工程，不需要单独引用
+* js：js资源
+    * u-grid.js：表格控件js资源
+    * u-tree.js：树控件js资源
+    * u-polyfill.js：IE8适配js资源
+    * u.js：框架js资源
+* locales：框架多语资源，只需放入工程，不需要单独引用。可根据项目需求自行添加对应语种资源。

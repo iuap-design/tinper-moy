@@ -1,0 +1,27 @@
+#### neoui组件
+* component：可按需加载需要的组件
+    * css：css资源
+        * font-awesome.css：图标字体css资源
+        * tinper-neoui-grid.css：表格控件css资源
+        * tinper-neoui-tree.css：树控件css资源
+        * 其他css：各组件css资源
+    * fonts：图标字体资源文件，只需放入工程，不需要单独引用
+    * images：图片资源，只需放入工程，不需要单独引用
+    * js：js资源
+        * tinper-neoui-base.js：基础js资源，必须引入
+        * tinper-neoui-grid.js：表格控件js资源
+        * tinper-neoui-tree.js：树控件css资源
+        * 其他js：各组件js资源
+* full：一次性添加所有组件
+    * css：css资源
+        * font-awesome.css：图标字体css资源
+        * tinper-neoui-grid.css：表格控件css资源
+        * tinper-neoui-tree.css：树控件css资源
+        * tinper-neoui.css：组件css资源
+        * tinper-neoui.core.css：组件css资源，由于IE对css大小有限制，因此拆为2个单独文件，tinper-neoui.css中会引用此文件。使用时只需要引入tinper-neoui.css
+    * fonts：图标字体资源文件，只需放入工程，不需要单独引用
+    * images：图片资源，只需放入工程，不需要单独引用
+    * js：js资源
+        * tinper-neoui.js：组件js资源
+        * tinper-neoui-grid.js：表格控件js资源
+        * tinper-neoui-tree.js：树控件css资源
