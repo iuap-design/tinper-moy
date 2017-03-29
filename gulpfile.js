@@ -558,7 +558,7 @@ gulp.task('originlessucore', function() {
 
 gulp.task('originless', ['originless:ui', 'originlessucore', 'originlesstree', 'originlessgrid'], function() {
     var data = fs.readFileSync(uuiDist + '/css/u.css', 'utf8');
-    data = data.replace('@import \'u.core.css\';', '');
+    data = data.replace('@import \'u.core.css\';', '').replace('@import \'tinper-neoui.core.css\';', '');
     fs.writeFileSync(uuiDist + '/css/u.css', data);
 
     return gulp.src([uuiDist + '/css/u.css', './compatible/css/u.css'])
