@@ -327,6 +327,9 @@ gulp.task('down', ['newpack'], function() {
  * @return {[type]}   [description]
  */
 gulp.task('new', function() {
+    var data = fs.readFileSync(uuiDist + '/css/u.css', 'utf8');
+    data = data.replace('@import \'tinper-neoui.core.css\';', '');
+    fs.writeFileSync(uuiDist + '/css/u.css', data);
     var originPath, destPath;
     for (var i = 0; i < otherDirArray.length; i++) {
         gulp.src(otherDirArray[i] + '/**')
