@@ -7,7 +7,7 @@ import { minify } from 'uglify-js-harmony';
 export default {
     entry: "src/moy.js",
     dest: "dist/js/moy.js",
-    format: "iife",
+    format: "umd",
     moduleName: "bar",
     plugins: [
         nodeResolve(),//将第三方库打包进入口文件
