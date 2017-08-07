@@ -346,6 +346,9 @@ gulp.task('new', function() {
 
 
 
+/**
+ * HR的发布maven的相关配置；运行 gulp maven 即可
+ */
 
 // maven 配置信息
 
@@ -445,7 +448,9 @@ gulp.task("maven", ["install"], function() {
 
 
 
-
+/**
+ * 云表单的单独产出功能，只对云表单有关系；使用 gulp origin ;产出在dist下面2.0.1文件夹，是固定的
+ */
 /* 兼容之前 begin*/
 var originGlobs = {
     js: [
@@ -587,6 +592,9 @@ gulp.task('origincopy', function() {
 
 })
 
+/**
+ * gulp origin：云表单的单独产出功能，只对云表单有关系
+ */
 gulp.task('origin', ['originassets', 'originjs', 'originless', 'origincopy'], function() {
     var data = fs.readFileSync(originDist + '/css/u.css', 'utf8');
     cssheaderStr = '@import \'oldu.css\';\r\n@import \'u.core.css\';\r\n@import \'grid.css\';\r\n@import \'tree.css\';\r\n';

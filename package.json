@@ -19,16 +19,16 @@
   },
   "dependencies": {
     "compox": "^3.2.2",
-    "compox-util": "^3.2.2",
-    "kero": "^3.2.4",
+    "compox-util": "^3.2.3",
+    "kero": "^3.2.5",
     "kero-fetch": "^3.2.2",
-    "neoui-kero": "^3.2.3",
-    "neoui-kero-mixin": "^3.2.2",
-    "tinper-neoui": "^3.2.4",
-    "tinper-neoui-grid": "^3.2.3",
+    "neoui-kero": "^3.2.4",
+    "neoui-kero-mixin": "^3.2.3",
+    "tinper-neoui": "^3.2.5",
+    "tinper-neoui-grid": "^3.2.4",
     "tinper-neoui-polyfill": "^3.2.1",
     "tinper-neoui-tree": "^3.2.2",
-    "tinper-sparrow": "^3.2.3"
+    "tinper-sparrow": "^3.2.4"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
