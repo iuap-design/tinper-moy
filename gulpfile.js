@@ -477,19 +477,19 @@ var originGlobs = {
         './compatible/biz/checkbox.js',
     ]
 };
-
+//将compatible中的国际化对应json更改为我们框架的json，保持同步
 gulp.task('originlocales', function() {
-    gulp.src('./compatible/locales/en/*')
+    gulp.src('./locales/en/*')
         .pipe(gulp.dest(originDist + '/locales/en'));
-    gulp.src('./compatible/locales/en_US/*')
+    gulp.src('./locales/en_US/*')
         .pipe(gulp.dest(originDist + '/locales/en_US'));
-    gulp.src('./compatible/locales/en-US/*')
+    gulp.src('./locales/en-US/*')
         .pipe(gulp.dest(originDist + '/locales/en-US'));
-    gulp.src('./compatible/locales/zh/*')
+    gulp.src('./locales/zh/*')
         .pipe(gulp.dest(originDist + '/locales/zh'));
-    gulp.src('./compatible/locales/zh-CN/*')
+    gulp.src('./locales/zh-CN/*')
         .pipe(gulp.dest(originDist + '/locales/zh-CN'));
-    gulp.src('./compatible/locales/zh_CN/*')
+    gulp.src('./locales/zh_CN/*')
         .pipe(gulp.dest(originDist + '/locales/zh_CN'));
 });
 
