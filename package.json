@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "maven": "source ~/.bash_profile",
     "r-watch": "rollup -c -w",
     "r-build": "rollup -c",
     "build": "webpack --colors --progress --mode=build",
